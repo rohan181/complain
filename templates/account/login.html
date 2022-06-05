@@ -1,0 +1,36 @@
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css_link %}
+<!-- <link rel="stylesheet" href="{% static 'users/main.css' %}"> -->
+
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    <div class="container">
+        <div class="row justify-content-center">
+           
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom pt-4 pb-4 text-center" style="color: black;">Sign In</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn w-100 loginBtn" type="submit">Log in</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        
+                    </small>
+                    {% load socialaccount %}
+
+                    <a href="{% provider_login_url 'google'%}?Continue=/">Login with Google</a>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
